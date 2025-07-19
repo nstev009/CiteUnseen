@@ -67,7 +67,7 @@ const Analytics = () => {
   }));
             
             setRawData(cleanedData);
-            setDataSource('CSV Data');
+            setDataSource(t.analytics.dataSource);
             setLoading(false);
           },
           error: (error) => {
@@ -80,7 +80,7 @@ const Analytics = () => {
     };
 
     loadCitationData();
-  }, []);
+  }, [t]);
 
   // Get unique values for filters
   const getUniqueValues = (field) => {
@@ -90,10 +90,18 @@ const Analytics = () => {
 
   const years = getUniqueValues('year');
   const months = [
-    { value: 1, label: 'January' }, { value: 2, label: 'February' }, { value: 3, label: 'March' },
-    { value: 4, label: 'April' }, { value: 5, label: 'May' }, { value: 6, label: 'June' },
-    { value: 7, label: 'July' }, { value: 8, label: 'August' }, { value: 9, label: 'September' },
-    { value: 10, label: 'October' }, { value: 11, label: 'November' }, { value: 12, label: 'December' }
+    { value: 1, label: t.analytics.months.january }, 
+    { value: 2, label: t.analytics.months.february }, 
+    { value: 3, label: t.analytics.months.march },
+    { value: 4, label: t.analytics.months.april }, 
+    { value: 5, label: t.analytics.months.may }, 
+    { value: 6, label: t.analytics.months.june },
+    { value: 7, label: t.analytics.months.july }, 
+    { value: 8, label: t.analytics.months.august }, 
+    { value: 9, label: t.analytics.months.september },
+    { value: 10, label: t.analytics.months.october }, 
+    { value: 11, label: t.analytics.months.november }, 
+    { value: 12, label: t.analytics.months.december }
   ];
   const locations = getUniqueValues('location');
   const violationTypes = getUniqueValues('violation');
@@ -150,11 +158,11 @@ const Analytics = () => {
   };
 
   if (loading) {
-    return <div className="loading">Loading analytics...</div>;
+    return <div className="loading">{t.analytics.loading}</div>;
   }
 
   if (rawData.length === 0) {
-    return <div className="loading">No data available...</div>;
+    return <div className="loading">{t.analytics.noData}</div>;
   }
 
   const filteredData = getFilteredData();
@@ -171,18 +179,18 @@ const Analytics = () => {
         
         {dataSource && (
           <div className="data-source-indicator">
-            <small>Data Source: {dataSource} | Showing {totalCitations.toLocaleString()} citations</small>
+            <small>{t.analytics.dataSourceLabel}: {dataSource} | {t.analytics.showing} {totalCitations.toLocaleString()} {t.analytics.citations}</small>
           </div>
         )}
 
         {/* Filter Controls */}
         <div className="filters-section">
-          <h3>Filters</h3>
+          <h3>{t.analytics.filters.title}</h3>
           <div className="filters-grid">
             <div className="filter-group">
-              <label>Year:</label>
+              <label>{t.analytics.filters.year}:</label>
               <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
-                <option value="all">All Years</option>
+                <option value="all">{t.analytics.filters.allYears}</option>
                 {years.map(year => (
                   <option key={year} value={year}>{year}</option>
                 ))}
@@ -190,9 +198,9 @@ const Analytics = () => {
             </div>
             
             <div className="filter-group">
-              <label>Month:</label>
+              <label>{t.analytics.filters.month}:</label>
               <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
-                <option value="all">All Months</option>
+                <option value="all">{t.analytics.filters.allMonths}</option>
                 {months.map(month => (
                   <option key={month.value} value={month.value}>{month.label}</option>
                 ))}
@@ -200,9 +208,9 @@ const Analytics = () => {
             </div>
             
             <div className="filter-group">
-              <label>Location:</label>
+              <label>{t.analytics.filters.location}:</label>
               <select value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)}>
-                <option value="all">All Locations</option>
+                <option value="all">{t.analytics.filters.allLocations}</option>
                 {locations.map(location => (
                   <option key={location} value={location}>{location}</option>
                 ))}
@@ -210,9 +218,9 @@ const Analytics = () => {
             </div>
             
             <div className="filter-group">
-              <label>Violation Type:</label>
+              <label>{t.analytics.filters.violationType}:</label>
               <select value={selectedViolationType} onChange={(e) => setSelectedViolationType(e.target.value)}>
-                <option value="all">All Types</option>
+                <option value="all">{t.analytics.filters.allTypes}</option>
                 {violationTypes.map(type => (
                   <option key={type} value={type}>{type}</option>
                 ))}
@@ -220,9 +228,9 @@ const Analytics = () => {
             </div>
             
             <div className="filter-group">
-              <label>Car Make:</label>
+              <label>{t.analytics.filters.carMake}:</label>
               <select value={selectedCarMake} onChange={(e) => setSelectedCarMake(e.target.value)}>
-                <option value="all">All Makes</option>
+                <option value="all">{t.analytics.filters.allMakes}</option>
                 {carMakes.map(make => (
                   <option key={make} value={make}>{make}</option>
                 ))}
@@ -233,15 +241,15 @@ const Analytics = () => {
         
         <div className="stats-grid">
           <div className="stat-card">
-            <h3>Total Citations</h3>
+            <h3>{t.analytics.stats.totalCitations}</h3>
             <div className="stat-value">{totalCitations.toLocaleString()}</div>
           </div>
           <div className="stat-card">
-            <h3>Total Fines</h3>
+            <h3>{t.analytics.stats.totalFines}</h3>
             <div className="stat-value">${totalFines.toLocaleString()}</div>
           </div>
           <div className="stat-card">
-            <h3>Average Fine</h3>
+            <h3>{t.analytics.stats.averageFine}</h3>
             <div className="stat-value">${totalCitations > 0 ? Math.round(totalFines / totalCitations) : 0}</div>
           </div>
         </div>
@@ -249,7 +257,7 @@ const Analytics = () => {
         <div className="charts-grid">
           {/* Violation Frequency Bar Chart */}
           <div className="chart-container bar-chart">
-            <h2>Violation Frequency</h2>
+            <h2>{t.analytics.charts.violationFrequency.title}</h2>
             <div className="chart-responsive-container">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart 
@@ -286,7 +294,7 @@ const Analytics = () => {
             <div className="chart-legend">
               <div className="legend-item">
                 <span className="legend-color-bar"></span>
-                <span className="legend-text">Number of citations for each violation type</span>
+                <span className="legend-text">{t.analytics.charts.violationFrequency.legend}</span>
               </div>
             </div>
           </div>
@@ -294,7 +302,7 @@ const Analytics = () => {
           {/* Time Series Line Chart */}
           <div className="chart-container">
             <div className="chart-header">
-              <h2>Citations Over Time</h2>
+              <h2>{t.analytics.charts.timeSeriesChart.title}</h2>
               <div className="chart-controls">
                 <label>
                   <input
@@ -303,7 +311,7 @@ const Analytics = () => {
                     checked={timeViewMode === 'citations'}
                     onChange={(e) => setTimeViewMode(e.target.value)}
                   />
-                  Citation Count
+                  {t.analytics.charts.timeSeriesChart.citationCount}
                 </label>
                 <label>
                   <input
@@ -312,7 +320,7 @@ const Analytics = () => {
                     checked={timeViewMode === 'fines'}
                     onChange={(e) => setTimeViewMode(e.target.value)}
                   />
-                  Total Fines ($)
+                  {t.analytics.charts.timeSeriesChart.totalFines}
                 </label>
               </div>
             </div>
@@ -333,7 +341,7 @@ const Analytics = () => {
                   <Tooltip
                     formatter={(value, name) => [
                       timeViewMode === 'citations' ? value : `$${value}`,
-                      timeViewMode === 'citations' ? 'Citations' : 'Total Fines'
+                      timeViewMode === 'citations' ? t.analytics.charts.timeSeriesChart.citationsTooltip : t.analytics.charts.timeSeriesChart.finesLabel
                     ]}
                     contentStyle={{
                       backgroundColor: 'white',
@@ -357,7 +365,7 @@ const Analytics = () => {
               <div className="legend-item">
                 <span className="legend-color-line"></span>
                 <span className="legend-text">
-                  {timeViewMode === 'citations' ? 'Number of citations per month' : 'Total fine amount ($) per month'}
+                  {timeViewMode === 'citations' ? t.analytics.charts.timeSeriesChart.citationsLegend : t.analytics.charts.timeSeriesChart.finesLegend}
                 </span>
               </div>
             </div>
