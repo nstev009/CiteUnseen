@@ -27,19 +27,19 @@ const Home = () => {
         <div className="container">
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon"><img src='src/assets/graph_icon.jpg' alt='Graph Icon' /></div>
+              <div className="feature-icon"><img src='/graph_icon.jpg' alt='Graph Icon' /></div>
               <h3>{t.home.features.interactiveCharts.title}</h3>
               <p>{t.home.features.interactiveCharts.description}</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon"><img src='src/assets/graph_2.jpg' alt='Graph Icon' /></div>
+              <div className="feature-icon"><img src='/graph_2.jpg' alt='Graph Icon' /></div>
               <h3>{t.home.features.trendAnalysis.title}</h3>
               <p>{t.home.features.trendAnalysis.description}</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon"><img src='src/assets/map.jpg' alt='Graph Icon' /></div>
+              <div className="feature-icon"><img src='/map.jpg' alt='Graph Icon' /></div>
               <h3>{t.home.features.locationInsights.title}</h3>
               <p>{t.home.features.locationInsights.description}</p>
             </div>
