@@ -10,6 +10,7 @@ const Navigation = () => {
     <nav className="navigation">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
+          <div className='logo' aria-label='logo' />
           <h2>{t.siteTitle}</h2>
         </Link>
         

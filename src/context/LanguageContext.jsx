@@ -22,7 +22,21 @@ const translations = {
       subtitle: 'Parking Citation Data Analytics',
       description: 'Explore comprehensive parking citation data through interactive visualizations and insights.',
       getStarted: 'Get Started',
-      learnMore: 'Learn More'
+      learnMore: 'Learn More',
+      features: {
+        interactiveCharts: {
+          title: 'Interactive Charts',
+          description: 'Visualize parking citation data with dynamic and interactive charts.'
+        },
+        trendAnalysis: {
+          title: 'Trend Analysis',
+          description: 'Identify patterns and trends in parking citations over time.'
+        },
+        locationInsights: {
+          title: 'Location Insights',
+          description: 'Discover citation hotspots and geographical patterns.'
+        }
+      }
     },
     analytics: {
       title: 'Analytics Dashboard',
@@ -101,7 +115,21 @@ const translations = {
       subtitle: 'Analyses des Données de Contraventions de Stationnement',
       description: 'Explorez des données complètes de contraventions de stationnement à travers des visualisations interactives et des insights.',
       getStarted: 'Commencer',
-      learnMore: 'En Savoir Plus'
+      learnMore: 'En Savoir Plus',
+      features: {
+        interactiveCharts: {
+          title: 'Graphiques Interactifs',
+          description: 'Visualisez les données de contraventions de stationnement avec des graphiques dynamiques et interactifs.'
+        },
+        trendAnalysis: {
+          title: 'Analyse des Tendances',
+          description: 'Identifiez les modèles et tendances dans les contraventions de stationnement au fil du temps.'
+        },
+        locationInsights: {
+          title: 'Insights de Localisation',
+          description: 'Découvrez les points chauds de contraventions et les modèles géographiques.'
+        }
+      }
     },
     analytics: {
       title: 'Tableau de Bord Analytique',

@@ -28,20 +28,20 @@ const Home = () => {
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon"><img src='src/assets/graph_icon.jpg' alt='Graph Icon' /></div>
-              <h3>Interactive Charts</h3>
-              <p>Visualize parking citation data with dynamic and interactive charts.</p>
+              <h3>{t.home.features.interactiveCharts.title}</h3>
+              <p>{t.home.features.interactiveCharts.description}</p>
             </div>
             
             <div className="feature-card">
               <div className="feature-icon"><img src='src/assets/graph_2.jpg' alt='Graph Icon' /></div>
-              <h3>Trend Analysis</h3>
-              <p>Identify patterns and trends in parking citations over time.</p>
+              <h3>{t.home.features.trendAnalysis.title}</h3>
+              <p>{t.home.features.trendAnalysis.description}</p>
             </div>
             
             <div className="feature-card">
               <div className="feature-icon"><img src='src/assets/map.jpg' alt='Graph Icon' /></div>
-              <h3>Location Insights</h3>
-              <p>Discover citation hotspots and geographical patterns.</p>
+              <h3>{t.home.features.locationInsights.title}</h3>
+              <p>{t.home.features.locationInsights.description}</p>
             </div>
           </div>
         </div>
