@@ -33,7 +33,7 @@ const Analytics = () => {
     const loadCitationData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('public\parking_citations.csv');
+        const response = await fetch('/parking_citations.csv');
 
         if (!response.ok) {
           throw new Error('CSV file not found');
